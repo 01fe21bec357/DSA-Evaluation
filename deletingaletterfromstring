@@ -1,0 +1,60 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+void replace(char str[9999],char op[10],char oz[10]);
+int main()
+{
+    char str[9999];
+    char op[10];
+    char oz[10] ;
+    printf("Enter word to be replaced\n");
+    scanf("%s",op);
+    printf("enter new word\n");
+    scanf("%s",oz);
+    FILE *p;
+    p = fopen("panda.txt","r");
+    fscanf(p," %[^\n]%*c",&str);
+    printf("%s",str);
+    replace(str,op,oz);
+    FILE *s;
+    s = fopen("upd.txt","w");
+    fprintf(s,"%s",str);
+
+}
+void replace(char str[9999],char op[10],char oz[10])
+{
+ int l1 = strlen(op);
+    int l2 = strlen(oz);
+    int j=0,f=0,m=0,k=0;
+    for(int i=0;str[i]!='\0';i++)
+    {
+        k=i;
+        if(str[i]==op[j])
+        {
+           f++;
+           j++;
+        }
+        //j++;
+        else
+        {
+            j=0;
+           //break;
+        }
+
+        if(f==l1)
+        {
+            m=j-f;
+            k=k-(l1-1);
+              while(m!=l2)
+              {
+                str[k] = oz[m];
+                m++;
+                //i++;
+                k++;
+              }
+              f=0;
+              j=0;
+        }
+    }
+    printf("\n%s",str);
+}
