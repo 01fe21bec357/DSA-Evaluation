@@ -12,7 +12,7 @@ int main()
     int arr[n];
     for(int i=0;i<n;i++)
     {
-        arr[i]=variab()%100;
+        arr[i]=rand()%100;
     }
     for(int i=0;i<n;i++)
     {
